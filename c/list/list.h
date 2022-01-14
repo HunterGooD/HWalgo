@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "node.h"
 
+//typedef struct Node Node;
+//struct Node{
+    //int n;
+  //  Node* next;
+//};
 
-typedef struct Node Node;
-struct Node{
-    int n;
-    Node* next;
-};
-
-Node* newNode(int n) {
-    Node* tmp = (Node*)malloc(sizeof(Node));
-    tmp->n = n;
-    return tmp;
-}
+//Node* newNode(int n) {
+ //   Node* tmp = (Node*)malloc(sizeof(Node));
+  //  tmp->n = n;
+   // return tmp;
+//}
 
 typedef struct {
     Node* head;
@@ -20,11 +20,11 @@ typedef struct {
 }List;
 
 void addToListNode(List* l, int n); // Вставка в конец
-void addNode(Node* current, Node* add); // private
-void addNodeIdx(Node* node, Node* add,int currentIdx, int idx); //  private
+//void addNode(Node* current, Node* add); // private
+//void addNodeIdx(Node* node, Node* add,int currentIdx, int idx); //  private
 void addToListNodeIdx(List* l,int n, int idx); // Вставка по индексу
 void addToListNodeBeforeIdx(List* l,int n, int idx); // Вставка перед индексом
-void printNodes(Node* node, int idx);
+//void printNodes(Node* node, int idx);
 
 List* newList() {
     List* l = (List*)malloc(sizeof(List));
@@ -67,7 +67,7 @@ void addToListNodeIdx(List* l,int n, int idx) {
     addNodeIdx(l->head, node, 0, idx);
     l->length++;
 }
-
+/*
 void addNodeIdx(Node* node, Node* add, int currentIdx, int idx) {
     if (currentIdx+1 == idx) {
         add->next = node->next;
@@ -76,11 +76,11 @@ void addNodeIdx(Node* node, Node* add, int currentIdx, int idx) {
     }
     addNodeIdx(node->next, add, currentIdx+1, idx);
 }
-
+*/
 void addToListNodeBeforeIdx(List* l,int n, int idx) {
 
 }
-
+/*
 void addNode(Node* current, Node* add) {
     if (current->next == NULL) {
         current->next = malloc(sizeof(Node));
@@ -89,7 +89,7 @@ void addNode(Node* current, Node* add) {
     }
     addNode(current->next, add);
 }
-
+*/
 void printList(List* l) {
     if (l->head == NULL) {
         printf("Length 0");
@@ -99,11 +99,17 @@ void printList(List* l) {
     printNodes(l->head->next, 1);
     printf("> NULL\n");
 }
-
+/*
 void printNodes(Node* node, int idx) {
     if (node->next == NULL) {
         return;
     }
     printf("[%d] %d - ", idx, node->n);
     printNodes(node->next, idx+1);
+}
+*/
+void freeList(List **list) {
+	free_nodes(*(list)->head);
+	free(*list);
+	list = NULL;
 }

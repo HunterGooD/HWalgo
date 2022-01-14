@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <malloc.h>
-//#include "stack.h"
-#include "list.h"
+//#include "stack/stack.h"
+#include "list/list.h"
 
 int main() {
     /**
