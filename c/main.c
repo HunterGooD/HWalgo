@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <malloc.h>
 //#include "stack/stack.h"
-#include "list/list.h"
+//#include "list/list.h"
+#include "avlTree/avlTree.h"
 
 int main() {
     /**
@@ -30,13 +31,23 @@ int main() {
     /**
      * Для просмотра структуры List
      */
-    int* arr = malloc(sizeof(int) * 10);
-    for (int i = 0; i < 10; i++) {
-        arr[i] = i+1;
-    }
-    List* l = newListFromArray(arr, 10);
-    addToListNode(l, 10);
-    addToListNodeIdx(l, 4, 3);
-    printList(l);
+    /* int* arr = malloc(sizeof(int) * 10); */
+    /* for (int i = 0; i < 10; i++) { */
+    /*     arr[i] = i+1; */
+    /* } */
+    /* List* l = newListFromArray(arr, 10); */
+    /* addToListNode(l, 10); */
+    /* addToListNodeIdx(l, 4, 3); */
+    /* printList(l); */
+    /* avlTree *avl = NewAVLTree(); */
+    /* for (int i = 0; i < 5; i++) { */
+    /*     insertInTree(avl, i); */
+    /* } */
+    printf(" 1\n");
+    printf("/\n");
+    printf("3\n");
+    printf("\r\r\r\r\\");
+    printf("4\n");
+    printf("Hello world\rworld hello");
     return 0;
 }

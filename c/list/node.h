@@ -1,12 +1,16 @@
-void addNode(Node* current, Node* add); // private
-void addNodeIdx(Node* node, Node* add,int currentIdx, int idx); //  private
-void printNodes(Node* node, int idx);
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct Node Node;
 struct Node{
     int n;
     Node* next;
 };
+
+void addNode(Node* current, Node* add); // private
+void addNodeIdx(Node* node, Node* add,int currentIdx, int idx); //  private
+void printNodes(Node* node, int idx);
+
 
 Node* newNode(int n) {
     Node* tmp = (Node*)malloc(sizeof(Node));
@@ -16,7 +20,7 @@ Node* newNode(int n) {
 
 void addNode(Node* current, Node* add) {
     if (current->next == NULL) {
-        current->next = malloc(sizeof(Node));
+        current->next = (Node*)malloc(sizeof(Node));
         current->next = add;
         return;
     }
@@ -40,11 +44,11 @@ void addNodeIdx(Node* node, Node* add, int currentIdx, int idx) {
     addNodeIdx(node->next, add, currentIdx+1, idx);
 }
 
-void free_nodes(Node* node) {
-	if (node->next == NULL) {
+void free_nodes(Node** node) {
+	if ((*node)->next == NULL) {
 		return;
 	}
-	free_nodes(node->next);
+	free_nodes(&(*node)->next);
 	free(node);
 	node = NULL;
 }

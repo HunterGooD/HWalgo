@@ -109,7 +109,7 @@ void printNodes(Node* node, int idx) {
 }
 */
 void freeList(List **list) {
-	free_nodes(*(list)->head);
+	free_nodes(&(*list)->head);
 	free(*list);
 	list = NULL;
 }
