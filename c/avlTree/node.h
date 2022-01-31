@@ -10,24 +10,26 @@ struct node{
     node *right;
 };
 
-node* newNode(int value) {
+node* newNode(int key) {
     node* n = (node*)malloc(sizeof(node));
     n->left = NULL;
     n->right = NULL;
-    n->value = value;
+    n->key = key;
+    n->value = 0;
+    n->height = 0;
     return n;
 }
 void printNode(node *n) {
     if (n == NULL) {
         return;
     }
-    printf("- %d -", n->value);
+    printf("- %d -", n->key);
     printNode(n->right);
     printNode(n->left);
 }
 
 int height(node *n) {
-    return n ? n->height : 0;
+    return n == NULL ? 0 : n->height;
 }
 
 int balanceFactor(node *n) {
@@ -76,7 +78,7 @@ node* balance(node *n) {
 }
 
 node* insert(node *n, int k) {
-    if (!n) {
+    if (n == NULL) {
         return newNode(k);
     }
     if (k < n->key) {
@@ -86,4 +88,14 @@ node* insert(node *n, int k) {
     }
     return balance(n);
 
+}
+
+void freeNode(node **n) {
+    if (n == NULL) {
+        return;
+    }
+    freeNode((*n)->left == NULL ? NULL : &(*n)->left);
+    freeNode((*n)->right == NULL ? NULL : &(*n)->right);
+    free(*n);
+    (*n) = NULL;
 }

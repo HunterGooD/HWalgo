@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 //#include "stack/stack.h"
 //#include "list/list.h"
 #include "avlTree/avlTree.h"
@@ -39,15 +39,11 @@ int main() {
     /* addToListNode(l, 10); */
     /* addToListNodeIdx(l, 4, 3); */
     /* printList(l); */
-    /* avlTree *avl = NewAVLTree(); */
-    /* for (int i = 0; i < 5; i++) { */
-    /*     insertInTree(avl, i); */
-    /* } */
-    printf(" 1\n");
-    printf("/\n");
-    printf("3\n");
-    printf("\r\r\r\r\\");
-    printf("4\n");
-    printf("Hello world\rworld hello");
+    avlTree *avl = NewAVLTree();
+    for (int i = 0; i < 5; i++) {
+        insertInTree(avl,i);
+    }
+    printAVLTree(avl);
+    freeAVL(&avl);
     return 0;
 }

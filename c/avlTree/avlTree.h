@@ -14,21 +14,19 @@ avlTree* NewAVLTree() {
 }
 
 void insertInTree(avlTree* avl, int k) {
-    if (avl->head == NULL) {
-        avl->head = insert(avl->head, k);
-    } else {
-        if (k > avl->head->right->key) {
-            avl->head->right = insert(avl->head->right, k);
-        } else {
-            avl->head->left = insert(avl->head->left, k);
-        }
-    }
-    balance(avl->head);
+    avl->head = insert(avl->head, k);
 }
 
 void printAVLTree(avlTree* avl) {
     if (avl->head == NULL) {
         printf("Empty tree");
     }
-    printf("%d", avl->head->key);
+    printNode(avl->head);
+    printf("\n");
+}
+
+void freeAVL(avlTree **avl) {
+    freeNode((*avl)->head == NULL ? NULL : &(*avl)->head);
+    free(*avl);
+    (*avl) = NULL;
 }
